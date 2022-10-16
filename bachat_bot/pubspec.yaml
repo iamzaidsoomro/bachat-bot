@@ -38,6 +38,7 @@ dependencies:
   firebase_auth: ^3.11.2
   firebase_core: ^1.24.0
   dot_navigation_bar: ^1.0.1+4
+  flat_icons_flutter: ^1.0.2
 
 dev_dependencies:
   flutter_test:
