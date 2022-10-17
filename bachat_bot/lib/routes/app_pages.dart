@@ -1,4 +1,5 @@
 import 'package:bachat_bot/routes/routes.dart';
+import 'package:bachat_bot/view/homepage_view.dart';
 import 'package:bachat_bot/view/login_view.dart';
 import 'package:get/get.dart';
 
@@ -10,9 +11,13 @@ class AppPages {
   static var routes = [
     GetPage(
         name: Routes.login,
-        page: () => LoginView(),
+        page: () => const LoginView(),
         binding: BindingsBuilder(() {
           Get.lazyPut(() => LoginController());
         })),
+    GetPage(
+      name: Routes.homescreen,
+      page: () => HomePageView(),
+    ),
   ];
 }

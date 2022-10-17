@@ -31,7 +31,7 @@ class LoginView extends GetWidget<LoginController> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: Get.mediaQuery.size.height * 0.2),
+                SizedBox(height: Get.mediaQuery.size.height * 0.15),
                 const Text("Login",
                     style: TextStyle(
                         color: Colors.white,
@@ -180,6 +180,48 @@ class LoginView extends GetWidget<LoginController> {
                                 },
                               ),
                             ],
+                          ),
+                          const Text('OR'),
+                          SizedBox(height: Get.mediaQuery.size.height * 0.01),
+                          ElevatedButton(
+                            onPressed: () {
+                              Get.offNamed(Routes.homescreen);
+                            },
+                            // ignore: sort_child_properties_last
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image(
+                                  image:
+                                      const AssetImage('lib/assets/google.png'),
+                                  height: Get.mediaQuery.size.width * 0.06,
+                                ),
+                                const SizedBox(width: 10),
+                                Text(
+                                  "Login with Google",
+                                  style: TextStyle(
+                                      fontSize:
+                                          Get.mediaQuery.size.width * 0.045),
+                                ),
+                              ],
+                            ),
+                            style: ButtonStyle(
+                              elevation: MaterialStateProperty.all(10.0),
+                              shadowColor: MaterialStateProperty.all<Color>(
+                                  secondaryColor),
+                              shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50.0),
+                                ),
+                              ),
+                              backgroundColor:
+                                  MaterialStateProperty.all(secondaryColor),
+                              foregroundColor: MaterialStateProperty.all(
+                                  Colors.black.withOpacity(0.3)),
+                              minimumSize: MaterialStateProperty.all(Size(
+                                  Get.mediaQuery.size.width,
+                                  Get.mediaQuery.size.height * 0.08)),
+                            ),
                           ),
                         ],
                       ),
