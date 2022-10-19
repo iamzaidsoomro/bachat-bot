@@ -12,7 +12,7 @@ class CategoriesCard extends GetWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
-        elevation: 10,
+        elevation: 3,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
