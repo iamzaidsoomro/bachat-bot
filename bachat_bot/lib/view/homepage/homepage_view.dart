@@ -119,6 +119,50 @@ class HomePageView extends GetWidget {
                       ],
                     ),
                   ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 20.0, right: 20.0, bottom: 20.0),
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Bachat Sale",
+                              style: GoogleFonts.sansita(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: primaryColor),
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                "See All",
+                                style: GoogleFonts.sansita(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: primaryColor),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: Get.mediaQuery.size.height * 0.02),
+                        Container(
+                          height: 120,
+                          child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: const [
+                                CategoriesCard(imageName: 'make_up.png'),
+                                CategoriesCard(imageName: 'furnitures.png'),
+                                CategoriesCard(imageName: 'tableware.png'),
+                                CategoriesCard(imageName: 'headphones.png')
+                              ]),
+                        )
+                      ],
+                    ),
+                  ),
                 )
               ],
             ),
