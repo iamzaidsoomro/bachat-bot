@@ -1,3 +1,4 @@
+import 'package:bachat_bot/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -32,10 +33,13 @@ class CustomAdvancedDrawer extends GetWidget {
                 padding: const EdgeInsets.only(right: 20, top: 20),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const <Widget>[
+                    children: <Widget>[
                       ListTile(
                         leading: Icon(Icons.shopping_bag_outlined),
                         title: Text("Shops"),
+                        onTap: () {
+                          Get.toNamed(Routes.shops);
+                        },
                       ),
                       ListTile(
                         leading: Icon(Icons.sell),

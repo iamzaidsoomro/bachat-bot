@@ -3,4 +3,5 @@ abstract class Routes {
   static const splashscreen = '/splashscreen';
   static const login = '/login';
   static const homescreen = '/homescreen';
+  static const shops = '/shops';
 }
