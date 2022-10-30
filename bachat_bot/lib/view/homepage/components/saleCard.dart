@@ -38,32 +38,32 @@ class SaleCard extends GetWidget {
                   width: Get.mediaQuery.size.width * 0.4,
                 ),
               ),
-              SizedBox(height: 5),
+              SizedBox(height: Get.mediaQuery.size.height * 0.04),
               Text(
                 categories,
-                style: const TextStyle(
+                style: TextStyle(
                     color: Colors.grey,
-                    fontSize: 12,
+                    fontSize: Get.mediaQuery.size.width * 0.04,
                     fontWeight: FontWeight.bold),
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: Get.mediaQuery.size.height * 0.01,
               ),
               Text(
                 "Upto $sale off",
-                style: const TextStyle(
+                style: TextStyle(
                     color: primaryColor,
-                    fontSize: 22,
+                    fontSize: Get.mediaQuery.size.width * 0.06,
                     fontWeight: FontWeight.bold),
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: Get.mediaQuery.size.height * 0.01,
               ),
               Text(
                 website,
-                style: const TextStyle(
+                style: TextStyle(
                     color: Colors.grey,
-                    fontSize: 10,
+                    fontSize: Get.mediaQuery.size.width * 0.03,
                     fontWeight: FontWeight.bold),
               ),
             ],

@@ -92,7 +92,7 @@ class HomePageBody extends GetWidget {
                   ),
                   SizedBox(height: Get.mediaQuery.size.height * 0.02),
                   Container(
-                    height: Get.mediaQuery.size.width * 0.8,
+                    height: Get.mediaQuery.size.width * 0.75,
                     child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: const [
