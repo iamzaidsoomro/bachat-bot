@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "470887175626",
+    "project_id": "bachatbot-a1d35",
+    "storage_bucket": "bachatbot-a1d35.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470887175626:android:230d755e70afb959246b33",
+        "android_client_info": {
+          "package_name": "com.example.bachat_bot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "470887175626-v7g5ebtrabc79743ikdsp46a3elgcjbu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqqRFdqUjQEtOKhyV3Sm8_VfXIiuYliNw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "470887175626-v7g5ebtrabc79743ikdsp46a3elgcjbu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
