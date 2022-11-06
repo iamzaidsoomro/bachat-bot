@@ -20,14 +20,54 @@ class ProfileView extends GetWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle, color: primaryColor),
-                child: CircleAvatar(
-                  backgroundColor: primaryColor,
-                  backgroundImage: const AssetImage("lib/assets/zaid.jpg"),
-                  radius: Get.mediaQuery.size.width * 0.15,
-                ),
+              Stack(
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: primaryColor,
+                        border: Border(
+                          top: BorderSide(color: primaryColor, width: 3),
+                          left: BorderSide(color: primaryColor, width: 3),
+                          right: BorderSide(color: primaryColor, width: 3),
+                          bottom: BorderSide(color: primaryColor, width: 3),
+                        )),
+                    child: CircleAvatar(
+                      backgroundColor: primaryColor,
+                      backgroundImage: const AssetImage("lib/assets/zaid.jpg"),
+                      radius: Get.mediaQuery.size.width * 0.2,
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0.5,
+                    right: 0.5,
+                    child: Container(
+                      height: Get.mediaQuery.size.width * 0.1,
+                      width: Get.mediaQuery.size.width * 0.1,
+                      decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: primaryColor,
+                          border: Border(
+                            top: BorderSide(color: primaryColor, width: 3),
+                            left: BorderSide(color: primaryColor, width: 3),
+                            right: BorderSide(color: primaryColor, width: 3),
+                            bottom: BorderSide(color: primaryColor, width: 3),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color.fromARGB(61, 0, 0, 0),
+                              blurRadius: 5.0,
+                              spreadRadius: 0.0,
+                              offset: Offset(0.0, 0.0),
+                            )
+                          ]),
+                      child: const Icon(
+                        Icons.edit,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
                 height: Get.mediaQuery.size.height * 0.04,
@@ -51,6 +91,12 @@ class ProfileView extends GetWidget {
                 children: [
                   profileTextBox(
                       "zaid3614@gmail.com", CupertinoIcons.envelope_fill, true),
+                  profileTextBox(
+                      "+92 344 3714148", CupertinoIcons.phone_fill, true),
+                  profileTextBox(
+                      "Sanghar, Sindh, Pakistan", Icons.home_filled, true),
+                  profileTextBox("Joined November, 2022",
+                      CupertinoIcons.clock_fill, false),
                   GestureDetector(
                       onTap: () {
                         FirebaseAuth.instance
@@ -78,7 +124,7 @@ class ProfileView extends GetWidget {
           style: GoogleFonts.acme(
               color: Colors.grey,
               fontSize: Get.mediaQuery.size.width * 0.04,
-              fontWeight: FontWeight.bold)),
+              fontWeight: FontWeight.w100)),
       trailing: editable
           ? IconButton(
               onPressed: () {},
