@@ -1,3 +1,5 @@
+import 'package:bachat_bot/routes/routes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import "package:flutter/material.dart";
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -49,7 +51,14 @@ class ProfileView extends GetWidget {
                 children: [
                   profileTextBox(
                       "zaid3614@gmail.com", CupertinoIcons.envelope_fill, true),
-                  profileTextBox("Logout", Icons.logout_sharp, false),
+                  GestureDetector(
+                      onTap: () {
+                        FirebaseAuth.instance
+                            .signOut()
+                            .then((value) => Get.offAllNamed(Routes.login));
+                      },
+                      child:
+                          profileTextBox("Logout", Icons.logout_sharp, false)),
                 ],
               )
             ],
