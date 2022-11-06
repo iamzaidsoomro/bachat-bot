@@ -1,6 +1,5 @@
 import 'package:bachat_bot/controller/homepage_controller.dart';
 import 'package:bachat_bot/utils/color_swatch.dart';
-import 'package:bachat_bot/utils/constants.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
@@ -27,7 +26,7 @@ class HomePageView extends GetWidget<HomePageController> {
           title: Image(
             image: const AssetImage("lib/assets/logo.png"),
             filterQuality: FilterQuality.high,
-            height: Get.mediaQuery.size.height * 0.08,
+            height: Get.mediaQuery.size.height * 0.06,
           ),
           centerTitle: false,
           actions: [
@@ -45,13 +44,18 @@ class HomePageView extends GetWidget<HomePageController> {
           color: primaryColor,
           backgroundColor: secondaryColor,
           buttonBackgroundColor: primaryColor,
-          height: 50,
-          items: const <Widget>[
-            Icon(Icons.percent, size: 30, color: secondaryColor),
-            Icon(Icons.shopping_cart, size: 30, color: secondaryColor),
-            Icon(Icons.home, size: 30, color: secondaryColor),
-            Icon(Icons.shopping_bag, size: 30, color: secondaryColor),
-            Icon(Icons.person, size: 30, color: secondaryColor),
+          height: Get.mediaQuery.size.width * 0.15,
+          items: <Widget>[
+            Icon(Icons.percent,
+                size: Get.mediaQuery.size.width * 0.08, color: secondaryColor),
+            Icon(Icons.shopping_cart,
+                size: Get.mediaQuery.size.width * 0.08, color: secondaryColor),
+            Icon(Icons.home,
+                size: Get.mediaQuery.size.width * 0.08, color: secondaryColor),
+            Icon(Icons.shopping_bag,
+                size: Get.mediaQuery.size.width * 0.08, color: secondaryColor),
+            Icon(Icons.person,
+                size: Get.mediaQuery.size.width * 0.08, color: secondaryColor),
           ],
           animationDuration: const Duration(milliseconds: 200),
           index: controller.index,

@@ -5,11 +5,15 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:bachat_bot/utils/color_swatch.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:bachat_bot/model/user.dart';
 
-class ProfileView extends GetWidget {
+import '../../controller/homepage_controller.dart';
+
+class ProfileView extends GetWidget<HomePageController> {
   const ProfileView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    var user = controller.userModel;
     return SingleChildScrollView(
         child: Center(
       child: Column(
@@ -62,7 +66,7 @@ class ProfileView extends GetWidget {
                             )
                           ]),
                       child: const Icon(
-                        Icons.edit,
+                        CupertinoIcons.camera_fill,
                         color: Colors.white,
                       ),
                     ),
@@ -90,11 +94,10 @@ class ProfileView extends GetWidget {
               Column(
                 children: [
                   profileTextBox(
-                      "zaid3614@gmail.com", CupertinoIcons.envelope_fill, true),
+                      user.email, CupertinoIcons.envelope_fill, true),
                   profileTextBox(
-                      "+92 344 3714148", CupertinoIcons.phone_fill, true),
-                  profileTextBox(
-                      "Sanghar, Sindh, Pakistan", Icons.home_filled, true),
+                      user.phoneNumber, CupertinoIcons.phone_fill, true),
+                  profileTextBox(user.address, Icons.home_filled, true),
                   profileTextBox("Joined November, 2022",
                       CupertinoIcons.clock_fill, false),
                   GestureDetector(
@@ -127,7 +130,9 @@ class ProfileView extends GetWidget {
               fontWeight: FontWeight.w100)),
       trailing: editable
           ? IconButton(
-              onPressed: () {},
+              onPressed: () {
+                controller.fetchUser();
+              },
               icon: const Icon(Icons.edit, color: primaryColor),
             )
           : const Text(''),

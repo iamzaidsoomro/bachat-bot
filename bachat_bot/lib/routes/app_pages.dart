@@ -1,6 +1,7 @@
 import 'package:bachat_bot/routes/routes.dart';
 import 'package:bachat_bot/view/homepage/homepage_view.dart';
 import 'package:bachat_bot/view/login_view.dart';
+import 'package:bachat_bot/view/profilePage/profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,19 +21,6 @@ class AppPages {
     } else {
       route = Routes.login;
     }
-    /*
-    preferences.then((value) => {
-          print(value.get('email')),
-          if (value.get("email").toString().isEmpty)
-            {
-              route = Routes.login,
-            }
-          else
-            {
-              route = Routes.homescreen,
-            }
-        });
-        */
     return route;
   }
 
@@ -52,7 +40,11 @@ class AppPages {
         transition: Transition.leftToRightWithFade),
     GetPage(
       name: Routes.shops,
-      page: () => ShopsView(),
+      page: () => const ShopsView(),
     ),
+    GetPage(
+      name: Routes.profile,
+      page: () => const ProfileView(),
+    )
   ];
 }

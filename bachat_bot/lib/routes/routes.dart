@@ -4,4 +4,5 @@ abstract class Routes {
   static const login = '/login';
   static const homescreen = '/homescreen';
   static const shops = '/shops';
+  static const profile = '/profile';
 }

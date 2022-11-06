@@ -21,8 +21,8 @@ class CategoriesCard extends GetWidget {
           padding: const EdgeInsets.all(10.0),
           child: Container(
             padding: const EdgeInsets.all(10.0),
-            width: 80,
-            height: 80,
+            width: Get.mediaQuery.size.width * 0.16,
+            height: Get.mediaQuery.size.width * 0.2,
             decoration: BoxDecoration(
               color: primaryColor,
               borderRadius: BorderRadius.circular(20),

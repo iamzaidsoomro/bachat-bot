@@ -26,11 +26,6 @@ class BachatSaleView extends GetWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text('Bachat Sale',
-                    style: GoogleFonts.sansita(
-                        fontSize: Get.mediaQuery.size.width * 0.08,
-                        fontWeight: FontWeight.bold,
-                        color: primaryColor)),
                 const SizedBox(
                   height: 20,
                 ),
@@ -44,6 +39,7 @@ class BachatSaleView extends GetWidget {
                       link: "https://www.google.com",
                       categories: "Baggy Blue Denim Jeans blah blah blah",
                       sale: "50% off",
+                      rating: 4,
                     ),
                     BachatCard(
                       imageName:
@@ -51,6 +47,7 @@ class BachatSaleView extends GetWidget {
                       link: "https://www.google.com",
                       categories: "Black T-Shirt Cotton",
                       sale: "50% off",
+                      rating: 5,
                     ),
                     BachatCard(
                       imageName:
@@ -58,6 +55,7 @@ class BachatSaleView extends GetWidget {
                       link: "https://www.google.com",
                       categories: "Creme Chinos",
                       sale: "50% off",
+                      rating: 3,
                     ),
                     BachatCard(
                       imageName:
@@ -65,6 +63,7 @@ class BachatSaleView extends GetWidget {
                       link: "https://www.google.com",
                       categories: "Pink Open Shirt",
                       sale: "50% off",
+                      rating: 4,
                     )
                   ],
                 ),
@@ -78,6 +77,7 @@ class BachatSaleView extends GetWidget {
                       link: "https://www.google.com",
                       categories: "clothing",
                       sale: "50% off",
+                      rating: 5,
                     ),
                     BachatCard(
                       imageName:
@@ -85,6 +85,7 @@ class BachatSaleView extends GetWidget {
                       link: "https://www.google.com",
                       categories: "clothing",
                       sale: "50% off",
+                      rating: 4,
                     ),
                     BachatCard(
                       imageName:
@@ -92,6 +93,7 @@ class BachatSaleView extends GetWidget {
                       link: "https://www.google.com",
                       categories: "clothing",
                       sale: "50% off",
+                      rating: 4,
                     ),
                     BachatCard(
                       imageName:
@@ -99,6 +101,7 @@ class BachatSaleView extends GetWidget {
                       link: "https://www.google.com",
                       categories: "clothing",
                       sale: "50% off",
+                      rating: 3,
                     )
                   ],
                 ),
@@ -112,6 +115,7 @@ class BachatSaleView extends GetWidget {
                       link: "https://www.google.com",
                       categories: "clothing",
                       sale: "50% off",
+                      rating: 4,
                     ),
                     BachatCard(
                       imageName:
@@ -119,6 +123,7 @@ class BachatSaleView extends GetWidget {
                       link: "https://www.google.com",
                       categories: "clothing",
                       sale: "50% off",
+                      rating: 4,
                     ),
                     BachatCard(
                       imageName:
@@ -126,6 +131,7 @@ class BachatSaleView extends GetWidget {
                       link: "https://www.google.com",
                       categories: "clothing",
                       sale: "50% off",
+                      rating: 5,
                     ),
                     BachatCard(
                       imageName:
@@ -133,6 +139,7 @@ class BachatSaleView extends GetWidget {
                       link: "https://www.google.com",
                       categories: "clothing",
                       sale: "50% off",
+                      rating: 4,
                     )
                   ],
                 )

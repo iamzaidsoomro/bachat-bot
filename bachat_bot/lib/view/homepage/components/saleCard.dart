@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../utils/color_swatch.dart';
 
@@ -28,8 +29,8 @@ class SaleCard extends GetWidget {
                 width: Get.width * 0.5,
                 height: Get.height * 0.2,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(color: primaryColor, width: 3),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: primaryColor, width: 5),
                 ),
                 child: Image.asset(
                   "lib/assets/$imageName",
@@ -38,20 +39,20 @@ class SaleCard extends GetWidget {
                   width: Get.mediaQuery.size.width * 0.4,
                 ),
               ),
-              SizedBox(height: Get.mediaQuery.size.height * 0.04),
+              SizedBox(height: Get.mediaQuery.size.height * 0.01),
               Text(
                 categories,
-                style: TextStyle(
+                style: GoogleFonts.sansita(
                     color: Colors.grey,
                     fontSize: Get.mediaQuery.size.width * 0.04,
-                    fontWeight: FontWeight.bold),
+                    fontWeight: FontWeight.normal),
               ),
               SizedBox(
                 height: Get.mediaQuery.size.height * 0.01,
               ),
               Text(
                 "Upto $sale off",
-                style: TextStyle(
+                style: GoogleFonts.sansita(
                     color: primaryColor,
                     fontSize: Get.mediaQuery.size.width * 0.06,
                     fontWeight: FontWeight.bold),
@@ -61,7 +62,7 @@ class SaleCard extends GetWidget {
               ),
               Text(
                 website,
-                style: TextStyle(
+                style: GoogleFonts.sansita(
                     color: Colors.grey,
                     fontSize: Get.mediaQuery.size.width * 0.03,
                     fontWeight: FontWeight.bold),
