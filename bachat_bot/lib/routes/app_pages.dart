@@ -1,7 +1,8 @@
 import 'package:bachat_bot/routes/routes.dart';
 import 'package:bachat_bot/view/homepage/homepage_view.dart';
-import 'package:bachat_bot/view/login_view.dart';
+import 'package:bachat_bot/view/login/login_view.dart';
 import 'package:bachat_bot/view/profilePage/profile.dart';
+import 'package:bachat_bot/view/signup/signup_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -39,12 +40,8 @@ class AppPages {
         }),
         transition: Transition.leftToRightWithFade),
     GetPage(
-      name: Routes.shops,
-      page: () => const ShopsView(),
+      name: Routes.signup,
+      page: () => const SignUpView(),
     ),
-    GetPage(
-      name: Routes.profile,
-      page: () => const ProfileView(),
-    )
   ];
 }

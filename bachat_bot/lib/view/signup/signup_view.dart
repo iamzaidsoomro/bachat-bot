@@ -1,5 +1,6 @@
 import 'dart:io' show Platform;
 
+import 'package:bachat_bot/controller/signup_controller.dart';
 import 'package:bachat_bot/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,11 +8,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
-import '../controller/login_controller.dart';
-import '../utils/color_swatch.dart';
+import '../../controller/login_controller.dart';
+import '../../utils/color_swatch.dart';
 
-class LoginView extends GetWidget<LoginController> {
-  const LoginView({Key? key}) : super(key: key);
+class SignUpView extends GetWidget<SignupController> {
+  const SignUpView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +32,17 @@ class LoginView extends GetWidget<LoginController> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: Get.mediaQuery.size.height * 0.15),
-                const Text("Login",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold)),
-                SizedBox(height: Get.mediaQuery.size.height * 0.05),
+                SizedBox(
+                  height: Get.mediaQuery.size.height * 0.06,
+                ),
+                Image.asset(
+                  'lib/assets/logo.png',
+                  height: Get.mediaQuery.size.width * 0.2,
+                  color: secondaryColor,
+                ),
+                SizedBox(
+                  height: Get.mediaQuery.size.height * 0.05,
+                ),
                 Container(
                     padding: EdgeInsets.all(Get.mediaQuery.size.width * 0.1),
                     width: Get.mediaQuery.size.width * 0.9,
@@ -47,16 +52,16 @@ class LoginView extends GetWidget<LoginController> {
                       border: Border.all(color: secondaryColor, width: 1),
                       boxShadow: [
                         BoxShadow(
-                          color: secondaryColor.withOpacity(0.2),
+                          color: primaryColor.withOpacity(0.2),
                           spreadRadius: 3,
                           blurRadius: 2,
                           offset: const Offset(4, 4),
                         ),
                         const BoxShadow(
-                          color: secondaryColor,
+                          color: primaryColor,
                           spreadRadius: 3,
                           blurRadius: 2,
-                          offset: const Offset(-3, -3),
+                          offset: Offset(-3, -3),
                         ),
                       ],
                     ),
@@ -66,8 +71,41 @@ class LoginView extends GetWidget<LoginController> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           TextFormField(
-                            style: const TextStyle(color: primaryColor),
+                            controller: controller.displayNameController,
+                            cursorColor: primaryColor,
+                            style: const TextStyle(color: Colors.grey),
+                            decoration: InputDecoration(
+                              labelText: "Full-Name",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: const BorderSide(
+                                  color: primaryColor,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: const BorderSide(
+                                  color: primaryColor,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: const BorderSide(
+                                  color: primaryColor,
+                                ),
+                              ),
+                              labelStyle: const TextStyle(
+                                  color: primaryColor, fontSize: 18),
+                              floatingLabelStyle: const TextStyle(
+                                  color: primaryColor, fontSize: 18),
+                            ),
+                            keyboardType: TextInputType.text,
+                          ),
+                          SizedBox(height: Get.mediaQuery.size.height * 0.03),
+                          TextFormField(
                             controller: controller.emailController,
+                            cursorColor: primaryColor,
+                            style: const TextStyle(color: Colors.grey),
                             decoration: InputDecoration(
                               labelText: "Email",
                               border: OutlineInputBorder(
@@ -98,7 +136,8 @@ class LoginView extends GetWidget<LoginController> {
                           SizedBox(height: Get.mediaQuery.size.height * 0.03),
                           TextFormField(
                             controller: controller.passwordController,
-                            style: const TextStyle(color: primaryColor),
+                            cursorColor: primaryColor,
+                            style: const TextStyle(color: Colors.grey),
                             decoration: InputDecoration(
                               labelText: "Password",
                               border: OutlineInputBorder(
@@ -127,14 +166,76 @@ class LoginView extends GetWidget<LoginController> {
                             obscureText: true,
                             keyboardType: TextInputType.visiblePassword,
                           ),
+                          SizedBox(height: Get.mediaQuery.size.height * 0.03),
+                          TextFormField(
+                            controller: controller.phoneNumberController,
+                            cursorColor: primaryColor,
+                            style: const TextStyle(color: Colors.grey),
+                            decoration: InputDecoration(
+                              labelText: "Phone Number",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: const BorderSide(
+                                  color: primaryColor,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: const BorderSide(
+                                  color: primaryColor,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: const BorderSide(
+                                  color: primaryColor,
+                                ),
+                              ),
+                              labelStyle: const TextStyle(
+                                  color: primaryColor, fontSize: 18),
+                              floatingLabelStyle: const TextStyle(
+                                  color: primaryColor, fontSize: 18),
+                            ),
+                            keyboardType: TextInputType.number,
+                          ),
+                          SizedBox(height: Get.mediaQuery.size.height * 0.03),
+                          TextFormField(
+                            controller: controller.addressController,
+                            cursorColor: primaryColor,
+                            style: const TextStyle(color: Colors.grey),
+                            decoration: InputDecoration(
+                              labelText: "Address",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: const BorderSide(
+                                  color: primaryColor,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: const BorderSide(
+                                  color: primaryColor,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: const BorderSide(
+                                  color: primaryColor,
+                                ),
+                              ),
+                              labelStyle: const TextStyle(
+                                  color: primaryColor, fontSize: 18),
+                              floatingLabelStyle: const TextStyle(
+                                  color: primaryColor, fontSize: 18),
+                            ),
+                            keyboardType: TextInputType.streetAddress,
+                          ),
                           const SizedBox(height: 20),
                           ElevatedButton(
-                            onPressed: () {
-                              controller.login(context);
-                            },
+                            onPressed: () {},
                             // ignore: sort_child_properties_last
                             child: Text(
-                              "Login",
+                              "Create Account",
                               style: TextStyle(
                                   fontSize: Get.mediaQuery.size.width * 0.045),
                             ),
@@ -160,68 +261,20 @@ class LoginView extends GetWidget<LoginController> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              TextButton(
-                                child: Text("Forgot Password",
-                                    style: TextStyle(
-                                        color: primaryColor.withOpacity(0.7),
-                                        fontSize: 12)),
-                                onPressed: () {},
-                              ),
-                              const Text("|",
+                              Text("Already have an account?",
                                   style: TextStyle(
-                                      fontSize: 12, color: Colors.grey)),
+                                      color: primaryColor.withOpacity(0.7),
+                                      fontSize: 12)),
                               TextButton(
-                                child: Text("Sign Up",
+                                child: Text("Sign In",
                                     style: TextStyle(
                                         color: primaryColor.withOpacity(0.7),
                                         fontSize: 12)),
                                 onPressed: () {
-                                  Get.toNamed("/signup");
+                                  Get.toNamed(Routes.login);
                                 },
                               ),
                             ],
-                          ),
-                          const Text('OR'),
-                          SizedBox(height: Get.mediaQuery.size.height * 0.01),
-                          ElevatedButton(
-                            onPressed: () {
-                              Get.offNamed(Routes.homescreen);
-                            },
-                            // ignore: sort_child_properties_last
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image(
-                                  image:
-                                      const AssetImage('lib/assets/google.png'),
-                                  height: Get.mediaQuery.size.width * 0.06,
-                                ),
-                                const SizedBox(width: 10),
-                                Text(
-                                  "Login with Google",
-                                  style: TextStyle(
-                                      fontSize:
-                                          Get.mediaQuery.size.width * 0.045),
-                                ),
-                              ],
-                            ),
-                            style: ButtonStyle(
-                              elevation: MaterialStateProperty.all(10.0),
-                              shadowColor: MaterialStateProperty.all<Color>(
-                                  secondaryColor),
-                              shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(50.0),
-                                ),
-                              ),
-                              backgroundColor:
-                                  MaterialStateProperty.all(secondaryColor),
-                              foregroundColor: MaterialStateProperty.all(
-                                  Colors.black.withOpacity(0.3)),
-                              minimumSize: MaterialStateProperty.all(Size(
-                                  Get.mediaQuery.size.width,
-                                  Get.mediaQuery.size.height * 0.08)),
-                            ),
                           ),
                         ],
                       ),
@@ -230,6 +283,5 @@ class LoginView extends GetWidget<LoginController> {
             ),
           ),
         ));
-    throw UnimplementedError();
   }
 }
