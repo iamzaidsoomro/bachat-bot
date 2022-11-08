@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'saleCard.dart';
 import "package:flutter/material.dart";
 import "package:get/get.dart";
@@ -10,6 +12,7 @@ import 'search_bar.dart';
 class HomePageBody extends GetWidget {
   @override
   Widget build(BuildContext context) {
+    print(FirebaseAuth.instance.currentUser);
     return SingleChildScrollView(
       child: Column(
         children: [

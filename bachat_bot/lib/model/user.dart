@@ -4,22 +4,24 @@ part 'user.g.dart';
 
 @JsonSerializable()
 class UserModel {
-  String? profilePicture;
+  String? photoURL;
   String? email;
-  String? name;
+  String? displayName;
   String? uid;
   String? phoneNumber;
   String? address;
   String? city;
+  String? joined;
 
   UserModel({
-    this.profilePicture,
+    this.photoURL,
     this.email,
-    this.name,
+    this.displayName,
     this.uid,
     this.phoneNumber,
     this.address,
     this.city,
+    this.joined,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

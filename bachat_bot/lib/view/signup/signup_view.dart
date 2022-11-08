@@ -230,9 +230,20 @@ class SignUpView extends GetWidget<SignupController> {
                             ),
                             keyboardType: TextInputType.streetAddress,
                           ),
+                          SizedBox(height: Get.mediaQuery.size.height * 0.02),
+                          Text(
+                            "By creating an account you agree to our Terms of Service and Privacy Policy",
+                            softWrap: true,
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: Get.mediaQuery.size.width * 0.027,
+                            ),
+                          ),
                           const SizedBox(height: 20),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              controller.handleSignUpButton();
+                            },
                             // ignore: sort_child_properties_last
                             child: Text(
                               "Create Account",

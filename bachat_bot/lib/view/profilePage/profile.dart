@@ -38,36 +38,41 @@ class ProfileView extends GetWidget<HomePageController> {
                         )),
                     child: CircleAvatar(
                       backgroundColor: primaryColor,
-                      backgroundImage: const AssetImage("lib/assets/zaid.jpg"),
+                      backgroundImage: NetworkImage(user.photoURL!),
                       radius: Get.mediaQuery.size.width * 0.2,
                     ),
                   ),
                   Positioned(
                     bottom: 0.5,
                     right: 0.5,
-                    child: Container(
-                      height: Get.mediaQuery.size.width * 0.1,
-                      width: Get.mediaQuery.size.width * 0.1,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: primaryColor,
-                          border: Border(
-                            top: BorderSide(color: primaryColor, width: 3),
-                            left: BorderSide(color: primaryColor, width: 3),
-                            right: BorderSide(color: primaryColor, width: 3),
-                            bottom: BorderSide(color: primaryColor, width: 3),
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color.fromARGB(61, 0, 0, 0),
-                              blurRadius: 5.0,
-                              spreadRadius: 0.0,
-                              offset: Offset(0.0, 0.0),
-                            )
-                          ]),
-                      child: const Icon(
-                        CupertinoIcons.camera_fill,
-                        color: Colors.white,
+                    child: GestureDetector(
+                      onTap: () {
+                        controller.updateProfilePic();
+                      },
+                      child: Container(
+                        height: Get.mediaQuery.size.width * 0.1,
+                        width: Get.mediaQuery.size.width * 0.1,
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: primaryColor,
+                            border: Border(
+                              top: BorderSide(color: primaryColor, width: 3),
+                              left: BorderSide(color: primaryColor, width: 3),
+                              right: BorderSide(color: primaryColor, width: 3),
+                              bottom: BorderSide(color: primaryColor, width: 3),
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromARGB(61, 0, 0, 0),
+                                blurRadius: 5.0,
+                                spreadRadius: 0.0,
+                                offset: Offset(0.0, 0.0),
+                              )
+                            ]),
+                        child: const Icon(
+                          CupertinoIcons.camera_fill,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
@@ -79,7 +84,7 @@ class ProfileView extends GetWidget<HomePageController> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Zaid Ahmed Soomro",
+                  Text(user.displayName!,
                       style: GoogleFonts.sansita(
                           color: primaryColor,
                           fontSize: Get.mediaQuery.size.width * 0.06,
@@ -98,8 +103,7 @@ class ProfileView extends GetWidget<HomePageController> {
                   profileTextBox(
                       user.phoneNumber, CupertinoIcons.phone_fill, true),
                   profileTextBox(user.address, Icons.home_filled, true),
-                  profileTextBox("Joined November, 2022",
-                      CupertinoIcons.clock_fill, false),
+                  profileTextBox(user.joined, CupertinoIcons.clock_fill, false),
                   GestureDetector(
                       onTap: () {
                         FirebaseAuth.instance
@@ -130,9 +134,7 @@ class ProfileView extends GetWidget<HomePageController> {
               fontWeight: FontWeight.w100)),
       trailing: editable
           ? IconButton(
-              onPressed: () {
-                controller.fetchUser();
-              },
+              onPressed: () {},
               icon: const Icon(Icons.edit, color: primaryColor),
             )
           : const Text(''),

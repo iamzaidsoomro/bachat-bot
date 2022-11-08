@@ -1,3 +1,4 @@
+import 'package:bachat_bot/controller/signup_controller.dart';
 import 'package:bachat_bot/routes/routes.dart';
 import 'package:bachat_bot/view/homepage/homepage_view.dart';
 import 'package:bachat_bot/view/login/login_view.dart';
@@ -42,6 +43,9 @@ class AppPages {
     GetPage(
       name: Routes.signup,
       page: () => const SignUpView(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => SignupController());
+      }),
     ),
   ];
 }
