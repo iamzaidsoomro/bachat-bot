@@ -3,22 +3,23 @@ import 'package:bachat_bot/routes/routes.dart';
 import 'package:bachat_bot/view/getStarted/get_started.dart';
 import 'package:bachat_bot/view/homepage/homepage_view.dart';
 import 'package:bachat_bot/view/login/login_view.dart';
-import 'package:bachat_bot/view/profilePage/profile.dart';
 import 'package:bachat_bot/view/signup/signup_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:get_storage/get_storage.dart';
 import '../controller/homepage_controller.dart';
 import '../controller/login_controller.dart';
+import '../view/splashscreen/splashscreen.dart';
 
 class AppPages {
   AppPages._();
-  static var initialRoute = Routes.getStarted;
+  static var initialRoute = Routes.splashscreen;
   static String getInitialRoute() {
-    var preferences = SharedPreferences.getInstance();
+    bool isFirstTime = GetStorage().read("isFirstTime") == null;
     var route = Routes.login;
-    if (FirebaseAuth.instance.currentUser != null) {
+    if (isFirstTime) {
+      route = Routes.getStarted;
+    } else if (FirebaseAuth.instance.currentUser != null) {
       route = Routes.homescreen;
     } else {
       route = Routes.login;
@@ -27,6 +28,10 @@ class AppPages {
   }
 
   static var routes = [
+    GetPage(
+      name: Routes.splashscreen,
+      page: () => const SplashScreen(),
+    ),
     GetPage(
       name: Routes.getStarted,
       page: () => const GetStartedView(),
