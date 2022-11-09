@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../utils/color_swatch.dart';
+
 class SignupController extends GetxController {
   var displayNameController = TextEditingController();
   var emailController = TextEditingController();
@@ -19,6 +21,7 @@ class SignupController extends GetxController {
         addressController.text.isNotEmpty) {
       FirebaseAuth auth = FirebaseAuth.instance;
       FirebaseFirestore firestore = FirebaseFirestore.instance;
+
       auth
           .createUserWithEmailAndPassword(
               email: emailController.text, password: passwordController.text)
@@ -26,16 +29,26 @@ class SignupController extends GetxController {
         auth.currentUser?.updateDisplayName(displayNameController.text);
         auth.currentUser?.updatePhotoURL(
             "https://www.shareicon.net/data/512x512/2016/08/05/806962_user_512x512.png");
-        auth.currentUser?.sendEmailVerification();
         firestore.collection("users").doc(auth.currentUser?.email).set({
           "displayName": displayNameController.text,
           "email": emailController.text,
+          "password": passwordController.text,
           "phoneNumber": phoneNumberController.text,
           "address": addressController.text,
           "joined": DateTime.now().toString(),
         }).then((value) {
-          Get.snackbar("Success", "Your account has been created");
-          Get.offAllNamed(Routes.homescreen);
+          auth.currentUser?.sendEmailVerification();
+          Get.snackbar(
+            "Verify your email",
+            "Please check your email for verification",
+            titleText: const Text(
+              "Verify your email",
+              style: TextStyle(color: primaryColor),
+            ),
+            backgroundColor: Colors.white,
+            colorText: Colors.black,
+          );
+          Get.offAllNamed(Routes.login);
         });
       }).onError((error, stackTrace) {
         Get.snackbar("Error", error.toString());

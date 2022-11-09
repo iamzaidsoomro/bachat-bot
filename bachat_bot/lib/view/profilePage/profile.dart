@@ -89,29 +89,22 @@ class ProfileView extends GetWidget<HomePageController> {
                           color: primaryColor,
                           fontSize: Get.mediaQuery.size.width * 0.06,
                           fontWeight: FontWeight.bold)),
-                  SizedBox(
-                    width: Get.mediaQuery.size.width * 0.02,
-                  ),
-                  const Icon(Icons.edit, color: Colors.grey)
                 ],
               ),
               SizedBox(height: Get.mediaQuery.size.height * 0.07),
               Column(
                 children: [
-                  profileTextBox(
-                      user.email, CupertinoIcons.envelope_fill, true),
-                  profileTextBox(
-                      user.phoneNumber, CupertinoIcons.phone_fill, true),
-                  profileTextBox(user.address, Icons.home_filled, true),
-                  profileTextBox(user.joined, CupertinoIcons.clock_fill, false),
+                  profileTextBox(user.email, CupertinoIcons.envelope_fill),
+                  profileTextBox(user.phoneNumber, CupertinoIcons.phone_fill),
+                  profileTextBox(user.address, Icons.home_filled),
+                  profileTextBox(user.joined, CupertinoIcons.clock_fill),
                   GestureDetector(
                       onTap: () {
                         FirebaseAuth.instance
                             .signOut()
                             .then((value) => Get.offAllNamed(Routes.login));
                       },
-                      child:
-                          profileTextBox("Logout", Icons.logout_sharp, false)),
+                      child: profileTextBox("Logout", Icons.logout_sharp)),
                 ],
               )
             ],
@@ -121,7 +114,7 @@ class ProfileView extends GetWidget<HomePageController> {
     ));
   }
 
-  Widget profileTextBox(title, icon, editable) {
+  Widget profileTextBox(title, icon) {
     return ListTile(
       leading: Icon(
         icon,
@@ -132,12 +125,6 @@ class ProfileView extends GetWidget<HomePageController> {
               color: Colors.grey,
               fontSize: Get.mediaQuery.size.width * 0.04,
               fontWeight: FontWeight.w100)),
-      trailing: editable
-          ? IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.edit, color: primaryColor),
-            )
-          : const Text(''),
     );
   }
 }

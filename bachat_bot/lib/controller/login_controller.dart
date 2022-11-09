@@ -16,7 +16,19 @@ class LoginController extends GetxController {
           .signInWithEmailAndPassword(
               email: emailController.text, password: passwordController.text)
           .then((value) {
-        Get.offAllNamed(Routes.homescreen);
+        if (value.user!.emailVerified) {
+          Get.offAllNamed(Routes.homescreen);
+        } else {
+          _auth.signOut();
+          Get.snackbar("Verify your email",
+              "Please verify your email before first sign in",
+              titleText: const Text(
+                "Verify your email",
+                style: TextStyle(color: primaryColor),
+              ),
+              backgroundColor: Colors.white,
+              colorText: Colors.black);
+        }
       }).onError((error, stackTrace) {
         Get.snackbar("Error", error.toString());
       });

@@ -47,8 +47,7 @@ class HomePageController extends GetxController {
         address: value.data()!['address'],
         phoneNumber: value.data()!['phoneNumber'],
         uid: user.uid,
-        joined: FirebaseAuth.instance.currentUser?.metadata.creationTime!
-            .toIso8601String()
+        joined: FirebaseAuth.instance.currentUser?.metadata.creationTime!.year
             .toString(),
       );
     });
@@ -69,7 +68,30 @@ class HomePageController extends GetxController {
             .then((value) {
           value.ref.getDownloadURL().then((value) {
             userModel.photoURL = value;
-            FirebaseAuth.instance.currentUser!.updatePhotoURL(value);
+            FirebaseAuth.instance.currentUser!
+                .updatePhotoURL(value)
+                .then((value) => Get.snackbar(
+                      "Success",
+                      'Profile picture updated',
+                      titleText: const Text(
+                        'Success',
+                        style: TextStyle(
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ))
+                .onError((error, stackTrace) => Get.snackbar(
+                      "Failed",
+                      "Photo update failed",
+                      titleText: const Text(
+                        'Success',
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ));
             update();
           });
         });
