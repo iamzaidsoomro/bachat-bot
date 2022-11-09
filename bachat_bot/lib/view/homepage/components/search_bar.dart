@@ -28,6 +28,9 @@ class SearchBar extends GetWidget {
         child: TextField(
           cursorColor: primaryColor,
           cursorHeight: 20,
+          style: const TextStyle(
+            color: Colors.black54,
+          ),
           decoration: InputDecoration(
             filled: true,
             fillColor: secondaryColor.withOpacity(0.8),

@@ -15,7 +15,7 @@ class SplashScreen extends GetWidget {
       const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: secondaryColor,
+        systemNavigationBarColor: primaryColor,
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
     );
@@ -23,11 +23,13 @@ class SplashScreen extends GetWidget {
       Get.offAllNamed(AppPages.getInitialRoute());
     });
     return Scaffold(
+      backgroundColor: primaryColor,
       body: Center(
         child: Image(
           image: const AssetImage('lib/assets/logo.png'),
           width: Get.mediaQuery.size.width * 0.9,
-          color: primaryColor,
+          color: secondaryColor,
+          filterQuality: FilterQuality.high,
         ),
       ),
     );

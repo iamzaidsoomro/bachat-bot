@@ -26,6 +26,7 @@ class HomePageView extends GetWidget<HomePageController> {
           title: Image(
             image: const AssetImage("lib/assets/logo.png"),
             filterQuality: FilterQuality.high,
+            color: primaryColor,
             height: Get.mediaQuery.size.height * 0.06,
           ),
           centerTitle: false,
