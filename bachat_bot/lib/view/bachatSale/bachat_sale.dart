@@ -1,3 +1,4 @@
+import 'package:bachat_bot/controller/homepage_controller.dart';
 import 'package:bachat_bot/utils/color_swatch.dart';
 import './components/bachat_card.dart';
 import "package:flutter/material.dart";
@@ -7,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'components/bachat_section.dart';
 
-class BachatSaleView extends GetWidget {
+class BachatSaleView extends GetWidget<HomePageController> {
   const BachatSaleView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -25,18 +26,19 @@ class BachatSaleView extends GetWidget {
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const SizedBox(
+              children: const [
+                SizedBox(
                   height: 20,
                 ),
-                const BachatSection(
+                BachatSection(
                   title: "Clothing",
                   buttonText: "See All",
                   children: [
                     BachatCard(
                       imageName:
                           'https://cdn.shopify.com/s/files/1/2290/7887/products/F0060209626_lowers_3.jpg?v=1661841392',
-                      link: "https://www.google.com",
+                      link:
+                          "https://pk.sapphireonline.pk//products/3pe-luxlv22-6-1",
                       categories: "Baggy Blue Denim Jeans blah blah blah",
                       sale: "50% off",
                       rating: 4,
@@ -67,7 +69,7 @@ class BachatSaleView extends GetWidget {
                     )
                   ],
                 ),
-                const BachatSection(
+                BachatSection(
                   title: "Tech-Accessories",
                   buttonText: "See All",
                   children: [
@@ -105,7 +107,7 @@ class BachatSaleView extends GetWidget {
                     )
                   ],
                 ),
-                const BachatSection(
+                BachatSection(
                   title: "Cosmetics",
                   buttonText: "See All",
                   children: [
