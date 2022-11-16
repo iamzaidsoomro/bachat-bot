@@ -21,25 +21,15 @@ class HomePageView extends GetWidget<HomePageController> {
       return Scaffold(
         backgroundColor: secondaryColor,
         appBar: AppBar(
-          elevation: 0,
-          backgroundColor: secondaryColor,
-          title: Image(
-            image: const AssetImage("lib/assets/logo.png"),
-            filterQuality: FilterQuality.high,
-            color: primaryColor,
-            height: Get.mediaQuery.size.height * 0.06,
-          ),
-          centerTitle: false,
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.notifications,
-                color: primaryColor,
-              ),
+            elevation: 0,
+            backgroundColor: secondaryColor,
+            title: Image(
+              image: const AssetImage("lib/assets/logo.png"),
+              filterQuality: FilterQuality.high,
+              color: primaryColor,
+              height: Get.mediaQuery.size.height * 0.06,
             ),
-          ],
-        ),
+            centerTitle: false),
         body: controller.screens.elementAt(controller.index),
         bottomNavigationBar: CurvedNavigationBar(
           color: primaryColor,

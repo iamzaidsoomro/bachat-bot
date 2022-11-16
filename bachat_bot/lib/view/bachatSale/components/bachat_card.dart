@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -8,24 +9,30 @@ import '../../../utils/color_swatch.dart';
 class BachatCard extends GetWidget {
   final imageName,
       link,
-      categories,
-      sale,
+      name,
       rating,
       original_price,
-      discounted_price;
+      discounted_price,
+      description;
   const BachatCard(
       {Key? key,
       this.imageName,
       this.link,
-      this.categories,
-      this.sale,
+      this.name,
       this.original_price,
       this.discounted_price,
+      this.description,
       this.rating})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print(imageName);
+    var sale = int.parse(original_price.toString().substring(3)) -
+        int.parse(discounted_price.toString().substring(3));
+    var salePercentage =
+        (sale / int.parse(original_price.toString().substring(3))) * 100;
+    var salePercentageRounded = salePercentage.round().toString() + "% off";
     return GestureDetector(
       onTap: () async {
 //        await launchUrl(link);
@@ -56,44 +63,36 @@ class BachatCard extends GetWidget {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Image.network(
-                      "$imageName",
+                      "https://$imageName",
                       fit: BoxFit.cover,
                       height: Get.mediaQuery.size.width * 0.2,
                       width: Get.mediaQuery.size.width * 0.2,
-                      filterQuality: FilterQuality.medium,
+                      filterQuality: FilterQuality.high,
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent? loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes!
+                                : null,
+                          ),
+                        );
+                      },
                     ),
                   ),
                   const SizedBox(height: 5),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            for (int i = 0; i < rating; i++)
-                              const Icon(
-                                Icons.star,
-                                color: Colors.yellow,
-                                size: 15,
-                              ),
-                            Text(
-                              '($rating)',
-                              style: TextStyle(
-                                  color: Colors.grey.shade400,
-                                  fontSize: Get.mediaQuery.size.width * 0.03,
-                                  fontWeight: FontWeight.normal),
-                            ),
-                          ],
-                        ),
-                      ),
                       SizedBox(
                         width: Get.mediaQuery.size.width * 0.4,
                         child: Padding(
                           padding: const EdgeInsets.only(
                               top: 5.0, bottom: 1, left: 10, right: 0),
                           child: Text(
-                            categories,
+                            name,
                             softWrap: false,
                             style: TextStyle(
                                 overflow: TextOverflow.fade,
@@ -109,7 +108,7 @@ class BachatCard extends GetWidget {
                           padding: const EdgeInsets.only(
                               top: 5.0, bottom: 5, left: 10, right: 0),
                           child: Text(
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                            description != null ? description : "",
                             softWrap: false,
                             style: TextStyle(
                                 overflow: TextOverflow.fade,
@@ -120,15 +119,27 @@ class BachatCard extends GetWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: Container(
-                            alignment: Alignment.centerLeft,
-                            width: Get.mediaQuery.size.width * 0.4,
-                            child: Image.network(
-                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSPAJDav7VRMqoGWAlYXVQa9YtjpRBn-lg9OOoCd5Y&s",
-                              width: Get.mediaQuery.size.width * 0.1,
-                              height: Get.mediaQuery.size.width * 0.05,
-                            )),
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                                original_price != null ? "$original_price" : "",
+                                style: GoogleFonts.sansita(
+                                    color: Colors.grey,
+                                    fontSize: 12,
+                                    decoration: TextDecoration.lineThrough)),
+                            Text(
+                                discounted_price != null
+                                    ? "$discounted_price"
+                                    : "",
+                                style: GoogleFonts.sansita(
+                                  color: Colors.green,
+                                  fontSize: 12,
+                                )),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -147,7 +158,7 @@ class BachatCard extends GetWidget {
                   radius: Get.mediaQuery.size.width * 0.06,
                   backgroundColor: saleColor,
                   foregroundColor: secondaryColor,
-                  child: Text(sale,
+                  child: Text(salePercentageRounded,
                       style: TextStyle(
                           color: secondaryColor,
                           fontSize: Get.width * 0.04,

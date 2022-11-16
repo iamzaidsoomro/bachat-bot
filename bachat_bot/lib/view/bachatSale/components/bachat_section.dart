@@ -26,7 +26,7 @@ class BachatSection extends GetWidget {
         SizedBox(height: Get.mediaQuery.size.height * 0.02),
         Container(
           height: Get.mediaQuery.size.width * 0.6,
-          child: ListView(scrollDirection: Axis.horizontal, children: children),
+          child: children,
         ),
         SizedBox(height: Get.mediaQuery.size.height * 0.02),
       ],

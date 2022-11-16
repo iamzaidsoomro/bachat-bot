@@ -42,17 +42,21 @@ class ShopsView extends GetWidget {
                   link: "https://www.outfitters.com.pk/",
                   categories: "Clothing, Shoes"),
               ShopCard(
-                  imageName: "edenrobe.jpg",
-                  link: "https://www.edenrobe.com.pk/",
-                  categories: "Clothing"),
-              ShopCard(
-                  imageName: "jdot.png",
-                  link: "https://www.junaidjamshed.com.pk/",
-                  categories: "Clothing, Accessories, Perfumes"),
-              ShopCard(
-                  imageName: "khaadi.png",
-                  link: "https://www.khaadi.com.pk/",
+                  imageName: "Sapphire-Pakistan-Logo.jpg",
+                  link: "https://pk.sapphireonline.pk/",
                   categories: "Clothing, Accessories"),
+              ShopCard(
+                  imageName: "baggerz.png",
+                  link: "https://www.bagerz.com/",
+                  categories: "Shoes, Accessories"),
+              ShopCard(
+                  imageName: "aodour.png",
+                  link: "https://www.aodour.pk/",
+                  categories: "Cosmetics, Accessories"),
+              ShopCard(
+                  imageName: "ndure.png",
+                  link: "https://www.ndure.pk/",
+                  categories: "Shoes"),
             ],
           ),
         ],
